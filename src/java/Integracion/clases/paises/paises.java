@@ -38,7 +38,7 @@ public class paises {
        
        //se llama a servicio, llamada se produce de manera sincrona, queda en variable cities
       result[0] = gwSoap.getCitiesByCountry(pais);
-      result[1] = aSoap.getAirportInformationByAirportCode(pais);
+      result[1] = aSoap.getAirportInformationByCountry(pais);
        
        
                
