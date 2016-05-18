@@ -27,6 +27,14 @@
             <classpath path="${java.home}/../lib/tools.jar:${build.classes.dir}:${j2ee.platform.wsgen.classpath}:${javac.classpath}"/>
         </wsgen>
     </target>
+    <target name="wsgen-paises" depends="wsgen-init">
+        <copy todir="${build.classes.dir}/META-INF">
+            <fileset dir="${webinf.dir}" includes="wsit-Integracion.clases.paises.paises.xml"/>
+        </copy>
+        <wsgen sourcedestdir="${build.generated.sources.dir}/jax-ws" resourcedestdir="${build.generated.sources.dir}/jax-ws/resources/" destdir="${build.generated.sources.dir}/jax-ws" verbose="true" keep="true" genwsdl="true" sei="Integracion.clases.paises.paises" xendorsed="true">
+            <classpath path="${java.home}/../lib/tools.jar:${build.classes.dir}:${j2ee.platform.wsgen.classpath}:${javac.classpath}"/>
+        </wsgen>
+    </target>
     <!--
                 ===================
                 JAX-WS WSIMPORT SECTION
@@ -62,5 +70,24 @@
         <delete dir="${build.generated.sources.dir}/jax-ws/net/webservicex"/>
         <delete dir="${build.generated.dir}/jax-wsCache/service/NewWebServiceFromWSDL"/>
     </target>
-    <target name="wsimport-service-generate" depends="wsimport-service-NewWebServiceFromWSDL, wsimport-init"/>
+    <target name="wsimport-service-NewWebServiceFromWSDL_1" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/service/NewWebServiceFromWSDL_1"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/service/NewWebServiceFromWSDL_1" destdir="${build.generated.dir}/jax-wsCache/service/NewWebServiceFromWSDL_1" wsdl="${basedir}/${conf-dir}xml-resources/web-services/NewWebServiceFromWSDL_1/wsdl/airport.asmx.xml.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-services/NewWebServiceFromWSDL_1/wsdl/airport.asmx.xml.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/service/NewWebServiceFromWSDL_1"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/service/NewWebServiceFromWSDL_1">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+        <copy todir="${build.web.dir}/WEB-INF/wsdl/NewWebServiceFromWSDL_1">
+            <fileset dir="${basedir}/${conf-dir}xml-resources/web-services/NewWebServiceFromWSDL_1/wsdl/"/>
+        </copy>
+    </target>
+    <target name="wsimport-service-clean-NewWebServiceFromWSDL_1" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/net/webservicex"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/service/NewWebServiceFromWSDL_1"/>
+    </target>
+    <target name="wsimport-service-generate" depends="wsimport-service-NewWebServiceFromWSDL, wsimport-init, wsimport-init, wsimport-service-NewWebServiceFromWSDL_1"/>
 </project>

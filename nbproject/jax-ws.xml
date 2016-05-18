@@ -36,6 +36,41 @@
     <service name="Calculadora">
       <implementation-class>Integracion.clase.ejemplo.calculadora.Calculadora</implementation-class>
     </service>
+    <service name="paises">
+      <implementation-class>Integracion.clases.paises.paises</implementation-class>
+    </service>
+    <service name="NewWebServiceFromWSDL_1">
+      <implementation-class>Integracion.clases.aeropuerto.NewWebServiceFromWSDL</implementation-class>
+      <wsdl-url>file:/C:/Users/Andres%20S/Documents/NetBeansProjects/Tarea3/airport.asmx.xml</wsdl-url>
+      <local-wsdl-file>airport.asmx.xml.wsdl</local-wsdl-file>
+      <service-name>airport</service-name>
+      <port-name>airportSoap</port-name>
+      <package-name>net.webservicex</package-name>
+      <catalog-file>catalog.xml</catalog-file>
+      <use-provider>false</use-provider>
+      <wsimport-options>
+        <wsimport-option>
+          <wsimport-option-name>extension</wsimport-option-name>
+          <wsimport-option-value>true</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>verbose</wsimport-option-name>
+          <wsimport-option-value>true</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>fork</wsimport-option-name>
+          <wsimport-option-value>false</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>xnocompile</wsimport-option-name>
+          <wsimport-option-value>true</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>xendorsed</wsimport-option-name>
+          <wsimport-option-value>true</wsimport-option-value>
+        </wsimport-option>
+      </wsimport-options>
+    </service>
   </services>
   <clients/>
   <jsr109>true</jsr109>

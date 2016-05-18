@@ -19,8 +19,8 @@ public class Calculadora {
     /**
      * This is a sample web service operation
      */
-    @WebMethod(operationName = "hello")
-    public String hello(@WebParam(name = "name") String txt) {
-        return "Hello " + txt + " !";
+    @WebMethod(operationName = "sumar")
+    public double hello(@WebParam(name = "num1") double num1, @WebParam(name = "num2") double num2) {
+        return num1 + num2;
     }
 }
